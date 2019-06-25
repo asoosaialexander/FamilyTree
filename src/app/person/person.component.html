@@ -6,7 +6,7 @@
     <div class="card-body">
       <div class="row">
         <div class="col">
-          <button class="btn btn-success btn-sm" (click)="addPerson()">Add Person</button>
+          <button class="btn btn-success btn-sm"  routerLink="/personAdd" >Add Person</button>
         </div>
       </div>
       <div class="row">
@@ -16,19 +16,14 @@
               <tr>
                 <th>Name</th>
                 <th>Gender</th>
-                <th>Age</th>
+                <th>Occupation</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Soosai Alexander</td>
-                <td>Male</td>
-                <td>30</td>
-              </tr>
-              <tr>
-                <td>Antony Divya Jose</td>
-                <td>Female</td>
-                <td>27</td>
+              <tr *ngFor="let person of persons">
+                <td>{{person.name}}</td>
+                <td>{{person.gender}}</td>
+                <td>{{person.occupation}}</td>
               </tr>
             </tbody>
           </table>

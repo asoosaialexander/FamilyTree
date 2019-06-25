@@ -1,21 +1,23 @@
 export class Person {
-    id: number;
+    id?: number;
     name: string;
     gender: Gender;
-    _birthYear: number;
+    birthYear?: number;
+    occupation?:string;
+    notes?:string;
 
-    get birthYear(): number {
-        return this.birthYear;
-    }
+    // get birthYear(): number {
+    //     return this.birthYear;
+    // }
 
-    set birthYear(year:number){
-        if(year>1900 && year<= new Date().getFullYear()){
-            this.birthYear==year;
-        }
-        else{
-            console.log("Error: Invalid Birth Year!")
-        }
-    }
+    // set birthYear(year:number){
+    //     if(year>1900 && year<= new Date().getFullYear()){
+    //         this.birthYear==year;
+    //     }
+    //     else{
+    //         console.log("Error: Invalid Birth Year!")
+    //     }
+    // }
 }
 
 export enum Gender {
