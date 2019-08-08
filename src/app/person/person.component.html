@@ -21,7 +21,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let person of persons">
-                <td>{{person.name}}</td>
+                <td><a href="#" routerLink="/personDetail">{{person.name}}</a></td>
                 <td>{{person.gender}}</td>
                 <td>{{person.occupation}}</td>
               </tr>

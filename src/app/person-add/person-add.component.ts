@@ -12,9 +12,13 @@ import { Person } from '../shared/Person';
 export class PersonAddComponent implements OnInit {
 
   name = new FormControl('');
+  isAlive = new FormControl('');
+  mother = new FormControl('');
+  father = new FormControl('');
   gender = new FormControl('');
-  occupation = new FormControl('');
   birthYear = new FormControl('');
+  occupation = new FormControl('');
+  residence = new FormControl('');
   notes = new FormControl('');
 
   person: Person;
@@ -27,14 +31,18 @@ export class PersonAddComponent implements OnInit {
   submitForm() {
     this.person = {
       name: this.name.value,
+      isAlive: this.isAlive.value,
+      father:this.father.value,
+      mother:this.mother.value,
       gender: this.gender.value,
       birthYear: this.birthYear.value,
       occupation: this.occupation.value,
+      residence:this.residence.value,
       notes: this.notes.value
     }
     console.log(this.person);
     this.personService.addPerson(this.person).subscribe();
-    this.location.back();
+    //this.location.back();
   }
 
   goBack() {

@@ -25,7 +25,6 @@ export class PersonService {
   }
 
   addPerson(person: Person): Observable<Person> {
-    //console.log(`person details ${{...person}}`);
     return this.http.post<Person>(this.url, person, httpOptions)
       .pipe(
         //catchError(this.handleError("addPerson",person))

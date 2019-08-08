@@ -4,32 +4,72 @@
   </div>
   <div>
     <div class="card-body">
-      <div class="form-group row">
-        <label for="name">Name</label>
-        <input type="text" class="form-control form-control-sm" [formControl]="name">
+      <div class="card">
+        <div class="card-header bg-primary text-white">
+          Personal Information
+        </div>
+        <div class="card-body">
+          <div class="form-group row">
+            <div class="col">
+              <label for="name">Name</label>
+              <input type="text" class="form-control form-control-sm" [formControl]="name">
+            </div>
+            <div class="col">
+              <input type="checkbox" class="form-check-input">
+              <label class="form-input-label">Is Alive</label>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col">
+              <label for="father">Father</label>
+              <select class="form-control form-control-sm" [formControl]="father">
+                <option value="0">Select Father</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="mother">Mother</label>
+              <select class="form-control form-control-sm" [formControl]="mother">
+                <option value="0">Select Mother</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col">
+              <label for="gender">Gender</label>
+              <select class="form-control form-control-sm" [formControl]="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+            </div>
+            <div class="col">
+              <label for="name">Birth Year</label>
+              <input type="text" class="form-control form-control-sm" [formControl]="birthYear">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col">
+              <label for="Occupation">Occupation</label>
+              <input type="text" class="form-control form-control-sm" [formControl]="occupation">
+            </div>
+            <div class="col">
+              <label for="residence">Residence</label>
+              <input type="text" class="form-control form-control-sm" [formControl]="residence">
+            </div>
+          </div>
+          <!-- <div class="form-group row">
+            <div class="col">
+              <label for="name">Notes</label>
+              <textarea class="form-control form-control-sm" [formControl]="notes"></textarea>
+            </div>
+          </div> -->
+        </div>
       </div>
+      <app-spouse-manage></app-spouse-manage>
       <div class="form-group row">
-        <label for="gender">Gender</label>
-        <select class="form-control form-control-sm" [formControl]="gender">
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-        </select>
-      </div>
-      <div class="form-group row">
-        <label for="name">Birth Year</label>
-        <input type="text" class="form-control form-control-sm" [formControl]="birthYear">
-      </div>
-      <div class="form-group row">
-        <label for="name">Occupation</label>
-        <input type="text" class="form-control form-control-sm" [formControl]="occupation">
-      </div>
-      <div class="form-group row">
-        <label for="name">Notes</label>
-        <textarea class="form-control form-control-sm" [formControl]="notes"></textarea>
-      </div>
-      <div class="form-group row">
-        <button class="btn btn-primary btn-sm" (click)="submitForm()">Submit</button>
-        <button class="btn btn-secondary btn-sm" (click)="goBack()">Cancel</button>
+        <div class="col">
+          <button class="btn btn-primary" (click)="submitForm()">Save Person</button>&nbsp;
+          <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+        </div>
       </div>
     </div>
   </div>

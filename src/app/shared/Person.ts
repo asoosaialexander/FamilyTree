@@ -1,25 +1,24 @@
 export class Person {
     id?: number;
     name: string;
-    gender: Gender;
+    isAlive:boolean;
+    father?:string;
+    mother?:string;
+    gender: string;
     birthYear?: number;
     occupation?:string;
+    residence?:string;
     notes?:string;
-
-    // get birthYear(): number {
-    //     return this.birthYear;
-    // }
-
-    // set birthYear(year:number){
-    //     if(year>1900 && year<= new Date().getFullYear()){
-    //         this.birthYear==year;
-    //     }
-    //     else{
-    //         console.log("Error: Invalid Birth Year!")
-    //     }
-    // }
+    spouses?:Spouse[];
+    siblings?:Sibling[];
 }
 
-export enum Gender {
-    "Male", "Female"
+export class Sibling{
+    info:Person;
+    relation:string;
+}
+
+export class Spouse{
+    info:Person;
+    children:Person[];
 }

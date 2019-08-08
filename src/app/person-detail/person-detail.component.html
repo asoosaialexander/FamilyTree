@@ -1,0 +1,86 @@
+<div class="card">
+  <div class="card-header text-white bg-primary">
+    <h5>Personal Info</h5>
+  </div>
+  <div class="card-body">
+    <div class="card">
+      <div class="card-header">
+        <h5>{{person.name}}</h5>
+      </div>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col-2">
+            Father:
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.father" readonly />
+          </div>
+          <div class="col-2">
+            Gender:
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.gender" readonly>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-2">
+            Mother:
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.mother" readonly>
+          </div>
+          <div class="col-2">
+            Residence
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.residence" readonly>
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-2">
+            Year of Birth:
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.birthYear" readonly>
+          </div>
+          <div class="col-2">
+            Is Alive:
+          </div>
+          <div class="col-4">
+            <input type="text" class="form-control" [ngModel]="person.isAlive" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card">
+  <div class="card-header text-white bg-primary">
+    <h5>Relationship Details</h5>
+  </div>
+  <div class="card-body">
+    <div class="card" *ngFor="let spouse of person.spouses">
+      <div class="card-header">
+        <h5>{{spouse.info.name}} - Children</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item" *ngIf="spouse.children.length==0">No data to display</li>
+        <li class="list-group-item" *ngFor="let child of spouse.children">
+          <app-child-card [child]="child"></app-child-card>
+        </li>
+      </ul>
+    </div>
+    <br />
+    <div class="card">
+      <div class="card-header">
+        <h5>My Brothers & Sisters</h5>
+      </div>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngIf="person.siblings.length==0">No data to display</li>
+        <li class="list-group-item" *ngFor="let sibling of person.siblings">
+          <app-sibling-card [sibling]="sibling"></app-sibling-card>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
