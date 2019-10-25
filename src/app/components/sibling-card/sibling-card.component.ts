@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Sibling } from '../shared/Person';
+import { Sibling } from 'src/app/shared/Person';
 
 @Component({
   selector: 'app-sibling-card',

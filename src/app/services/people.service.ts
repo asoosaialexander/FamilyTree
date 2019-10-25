@@ -14,19 +14,30 @@ const httpOptions = {
   providedIn: 'root'
 })
 
-export class PersonService {
+export class PeopleService {
 
-  private url = environment.apiUrl + 'people';
-  error:any;
+  private url = environment.apiUrl + "people/";
+  error: any;
 
   constructor(private http: HttpClient) { }
 
-  getPersons(): Observable<Person[]> {
+  getPeople(): Observable<Person[]> {
     return this.http.get<Person[]>(this.url);
   }
 
+  getPerson(id:number):Observable<Person>{
+    return this.http.get<Person>(this.url+id);
+  }
+
   addPerson(person: Person): Observable<Person> {
-    console.log(JSON.stringify(person));
     return this.http.post<Person>(this.url, person);
+  }
+
+  updatePerson(id: number, person: Person): Observable<Person> {
+    return this.http.put<Person>(this.url + id, person);
+  }
+
+  deletePerson(id: number): Observable<any> {
+    return this.http.delete(this.url + id);
   }
 }

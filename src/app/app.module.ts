@@ -2,20 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PersonComponent } from './person/person.component';
+import { PersonViewComponent } from './components/person/person-view.component';
 import { HttpClientModule }    from '@angular/common/http';
-import { PersonAddComponent } from './person-add/person-add.component';
+import { PersonEditComponent } from './components/person-edit/person-edit.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { PersonDetailComponent } from './person-detail/person-detail.component';
-import { SiblingCardComponent } from './sibling-card/sibling-card.component';
-import { ChildrenCardComponent } from './child-card/child-card.component';
-import { SpouseManageComponent } from './spouse-manage/spouse-manage.component';
+import { PersonDetailComponent } from './components/person-detail/person-detail.component';
+import { SiblingCardComponent } from './components/sibling-card/sibling-card.component';
+import { ChildrenCardComponent } from './components/child-card/child-card.component';
+import { SpouseManageComponent } from './components/spouse-manage/spouse-manage.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonComponent,
-    PersonAddComponent,
+    PersonViewComponent,
+    PersonEditComponent,
     PersonDetailComponent,
     SiblingCardComponent,
     ChildrenCardComponent,

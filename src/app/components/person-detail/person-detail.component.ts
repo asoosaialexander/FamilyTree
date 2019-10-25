@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Person, Sibling, Spouse } from '../shared/Person';
+import { Person } from 'src/app/shared/Person';
 
 @Component({
   selector: 'app-person-detail',

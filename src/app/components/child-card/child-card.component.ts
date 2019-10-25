@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Person } from '../shared/Person';
+import { Person } from 'src/app/shared/Person';
 
 @Component({
   selector: 'app-child-card',
