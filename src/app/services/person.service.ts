@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../shared/Person';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -15,7 +16,7 @@ const httpOptions = {
 
 export class PersonService {
 
-  private url = 'https://localhost:5001/api/persons';
+  private url = environment.apiUrl + 'people';
   error:any;
 
   constructor(private http: HttpClient) { }
@@ -25,9 +26,7 @@ export class PersonService {
   }
 
   addPerson(person: Person): Observable<Person> {
-    return this.http.post<Person>(this.url, person, httpOptions)
-      .pipe(
-        //catchError(this.handleError("addPerson",person))
-      );
+    console.log(JSON.stringify(person));
+    return this.http.post<Person>(this.url, person);
   }
 }

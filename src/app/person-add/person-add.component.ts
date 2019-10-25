@@ -30,18 +30,23 @@ export class PersonAddComponent implements OnInit {
 
   submitForm() {
     this.person = {
+      id:0,
       name: this.name.value,
-      isAlive: this.isAlive.value,
-      father:this.father.value,
-      mother:this.mother.value,
+      //isAlive: this.isAlive.value,
+      //father:this.father.value,
+      //mother:this.mother.value,
       gender: this.gender.value,
       birthYear: this.birthYear.value,
       occupation: this.occupation.value,
       residence:this.residence.value,
-      notes: this.notes.value
+      //notes: this.notes.value
     }
     console.log(this.person);
-    this.personService.addPerson(this.person).subscribe();
+    this.personService.addPerson(this.person).subscribe(data=>{
+
+    },err=>{
+      console.log(JSON.stringify(err));
+    });
     //this.location.back();
   }
 
