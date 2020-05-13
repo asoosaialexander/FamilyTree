@@ -2,7 +2,7 @@
   <div class="card-header text-white bg-primary">
     <h5>Personal Info</h5>
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="person">
     <div class="card">
       <div class="card-header">
         <h5>{{person.name}}</h5>
@@ -13,7 +13,7 @@
             Father:
           </div>
           <div class="col-4">
-            <input type="text" class="form-control" [ngModel]="person.father" readonly />
+            <input type="text" class="form-control" [ngModel]="person.fatherName" readonly>
           </div>
           <div class="col-2">
             Gender:
@@ -27,7 +27,7 @@
             Mother:
           </div>
           <div class="col-4">
-            <input type="text" class="form-control" [ngModel]="person.mother" readonly>
+            <input type="text" class="form-control" [ngModel]="person.motherName" readonly>
           </div>
           <div class="col-2">
             Residence
@@ -54,7 +54,7 @@
     </div>
   </div>
 </div>
-<div class="card">
+<div class="card" *ngIf="person">
   <div class="card-header text-white bg-primary">
     <h5>Relationship Details</h5>
   </div>
@@ -71,12 +71,12 @@
       </ul>
     </div>
     <br />
-    <div class="card">
+    <div class="card" *ngIf="person.siblings">
       <div class="card-header">
         <h5>My Brothers & Sisters</h5>
       </div>
       <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngIf="person.siblings.length==0">No data to display</li>
+        <li class="list-group-item" *ngIf="person.siblings.length==0">No data to display</li>
         <li class="list-group-item" *ngFor="let sibling of person.siblings">
           <app-sibling-card [sibling]="sibling"></app-sibling-card>
         </li>

@@ -2,13 +2,14 @@
   <div class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></div>
   <strong>&nbsp;Loading...</strong>
 </div>
-<div class="card" style="margin-top:10px;" *ngIf="person">
-  <div class="card-header">
-    Add Person
-  </div>
-  <div>
-    <div class="card-body">
-      <form (ngSubmit)="submitForm()" #personEditForm="ngForm">
+<form (ngSubmit)="submitForm()" #personEditForm="ngForm">
+  <div class="card" style="margin-top:10px;" *ngIf="person">
+    <div class="card-header">
+      Add Person
+    </div>
+    <div>
+      <div class="card-body">
+
         <div class="form-group row">
           <div class="col">
             <label for="name">Name</label>
@@ -22,14 +23,18 @@
         <div class="form-group row">
           <div class="col">
             <label for="father">Father</label>
-            <select class="form-control form-control-sm" [(ngModel)]="person.father" id="father" name="father">
-              <option value="0">Select Father</option>
+            <select class="form-control form-control-sm" [(ngModel)]="person.fatherId" id="father" name="father">
+              <option [ngValue]="0">Select Father</option>
+              <option *ngFor="let father of fathers" [ngValue]="father.id" [selected]="father.id === person.fatherId">
+                {{father.name}}</option>
             </select>
           </div>
           <div class="col">
             <label for="mother">Mother</label>
-            <select class="form-control form-control-sm" [(ngModel)]="person.mother" id="mother" name="mother">
-              <option value="0">Select Mother</option>
+            <select class="form-control form-control-sm" [(ngModel)]="person.motherId" id="mother" name="mother">
+              <option [ngValue]="0">Select Mother</option>
+              <option *ngFor="let mother of mothers" [ngValue]="mother.id" [selected]="mother.id === person.motherId">
+                {{mother.name}}</option>
             </select>
           </div>
         </div>
@@ -43,32 +48,33 @@
           </div>
           <div class="col">
             <label for="name">Birth Year</label>
-            <input type="number" class="form-control form-control-sm" [(ngModel)]="person.birthYear" id="birthYear" name="birthYear">
+            <input type="number" class="form-control form-control-sm" [(ngModel)]="person.birthYear" id="birthYear"
+              name="birthYear">
           </div>
         </div>
         <div class="form-group row">
           <div class="col">
             <label for="Occupation">Occupation</label>
-            <input type="text" class="form-control form-control-sm" [(ngModel)]="person.occupation" id="occupation" name="occupation">
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="person.occupation" id="occupation"
+              name="occupation">
           </div>
           <div class="col">
             <label for="residence">Residence</label>
-            <input type="text" class="form-control form-control-sm" [(ngModel)]="person.residence" id="residence" name="residence">
+            <input type="text" class="form-control form-control-sm" [(ngModel)]="person.residence" id="residence"
+              name="residence">
           </div>
         </div>
-        <!-- <div class="form-group row">
-            <div class="col">
-              <label for="name">Notes</label>
-              <textarea class="form-control form-control-sm" [formControl]="notes"></textarea>
-            </div>
-          </div> -->
-        <div class="form-group row">
-          <div class="col">
-            <button type="submit" class="btn btn-primary">Save Person</button>&nbsp;
-            <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
-          </div>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
-</div>
+  <div *ngIf="person">
+    <app-spouse-manage [personId]="person.id"></app-spouse-manage>
+  </div>
+  <br />
+  <div class="form-group row">
+    <div class="col">
+      <button type="submit" class="btn btn-primary">Save Person</button>&nbsp;
+      <button class="btn btn-secondary" (click)="goBack()">Cancel</button>
+    </div>
+  </div>
+</form>

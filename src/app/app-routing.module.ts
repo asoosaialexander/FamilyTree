@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'person', component: PersonViewComponent },
   { path: 'spouseManage', component: SpouseManageComponent },
   { path: 'personEdit/:id', component: PersonEditComponent },
-  { path: 'personDetail', component: PersonDetailComponent }
+  { path: 'personDetail/:id', component: PersonDetailComponent }
 ];
 
 @NgModule({

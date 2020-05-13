@@ -13,6 +13,8 @@ import { ActivatedRoute } from '@angular/router';
 export class PersonEditComponent implements OnInit {
 
   person: Person;
+  fathers: Person[];
+  mothers: Person[];
 
   constructor(
     private location: Location,
@@ -20,10 +22,18 @@ export class PersonEditComponent implements OnInit {
     private peopleService: PeopleService) { }
 
   ngOnInit() {
+    this.peopleService.getFathers().subscribe(fathers=>{
+      this.fathers=fathers;
+    });
+    this.peopleService.getMothers().subscribe(mothers=>{
+      this.mothers=mothers;
+    });
+
     const id = parseInt(this.route.snapshot.paramMap.get("id"));
     if (id == 0) {
       this.person = {
         id: 0,
+        isAlive:true,
         name: "",
         gender: "",
         occupation: "",
@@ -35,6 +45,7 @@ export class PersonEditComponent implements OnInit {
         this.person = person;
       });
     }
+
   }
 
   submitForm() {

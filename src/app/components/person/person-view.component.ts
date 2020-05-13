@@ -23,11 +23,11 @@ export class PersonViewComponent implements OnInit {
     );
   }
 
-  onDelete(id:number,name:string) {
-    if (confirm("Are you sure to delete \"" + name+"\"?")) {
+  onDelete(id: number, name: string) {
+    if (confirm("Are you sure to delete \"" + name + "\"?")) {
       this.peopleService.deletePerson(id).subscribe(
-        res=>{},
-        err=>{
+        res => { },
+        err => {
           console.log(err);
         }
       );
