@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../../services/people.service';
 import { Person } from '../../shared/Person';
+import { $ } from 'protractor';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-person-view',
@@ -34,4 +36,7 @@ export class PersonViewComponent implements OnInit {
     }
   }
 
+  getImage(fileName: string) {
+    return environment.resourceUrl + "/images/" + fileName;
+  }
 }

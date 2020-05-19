@@ -3,7 +3,7 @@ import {Person} from '../shared/Person';
 export class PersonDetail {
   id: number;
   name: string;
-  isAlive:boolean;
+  isAlive:string;
   fatherId?:number;
   fatherName?:string;
   motherId?:number;
@@ -12,9 +12,10 @@ export class PersonDetail {
   birthYear?: number;
   occupation?:string;
   residence?:string;
-  notes?:string;
+  photo?:string;
   spouses?:Spouse[];
   siblings?:Sibling[];
+  maritalStatus?:string;
 }
 
 export class Sibling{

@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  //apiUrl:"http://localhost/FamilyTreeService/api/"
-  apiUrl:"https://localhost:5001/api/"
+  rootUrl:"http://localhost:4200/",
+  apiUrl: "https://localhost:5001/api/",
+  resourceUrl: "https://localhost:5001/resources"
 };
 
 /*

@@ -24,6 +24,8 @@
       <table class="table table-bordered table-striped" style="margin-top:10px;">
         <thead>
           <tr>
+            <th>
+            </th>
             <th class="text-center">Name
               <span class="pull-right">
                 <i class="fa fa-sort gray"></i>
@@ -53,6 +55,11 @@
         </thead>
         <tbody>
           <tr *ngFor="let person of persons">
+            <td>
+              <div *ngIf="person.photo">
+                <img [src]="getImage(person.photo)" alt="profile picture" style="width: 60px; height: 60px;"/>
+              </div>
+            </td>
             <td><a href="#" [routerLink]="['/personDetail',person.id]">{{person.name}}</a></td>
             <td>{{person.gender}}</td>
             <td>{{person.occupation}}</td>
@@ -62,8 +69,6 @@
                   class="fa fa-edit"></i> Edit</button>&nbsp;
               <button type="button" class="btn btn-sm btn-danger" (click)="onDelete(person.id, person.name)"> <i
                   class="fa fa-trash"></i> Delete</button>
-              <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter"> <i
-                  class="fa fa-trash"></i> Delete</button> -->
             </td>
           </tr>
         </tbody>

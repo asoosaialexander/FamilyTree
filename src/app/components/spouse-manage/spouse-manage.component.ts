@@ -12,6 +12,7 @@ import { SpouseService } from 'src/app/services/spouse.service';
 export class SpouseManageComponent implements OnInit {
 
   @Input() personId: number;
+  @Input() gender: string;
   selectedSpouse: number = 0;
   spouses: Person[];
   people: Person[];
@@ -22,7 +23,7 @@ export class SpouseManageComponent implements OnInit {
 
   ngOnInit() {
     this.peopleService.getPeople().subscribe(data => {
-      this.people = data;
+      this.people = data.filter(p => p.gender != this.gender);
     });
     this.peopleService.getSpouses(this.personId).subscribe(spouses => {
       this.spouses = spouses;
@@ -30,7 +31,7 @@ export class SpouseManageComponent implements OnInit {
   }
 
   addSpouse() {
-    this.spouseService.addPerson(this.personId,this.selectedSpouse).subscribe();
+    this.spouseService.addPerson(this.personId, this.selectedSpouse).subscribe();
   }
 
   removeSpouse(spouseId: number) {

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { PersonDetail } from 'src/app/shared/PersonDetail';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { PeopleService } from 'src/app/services/people.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-person-detail',
@@ -16,7 +17,8 @@ export class PersonDetailComponent implements OnInit {
   constructor(
     private location: Location,
     private route: ActivatedRoute,
-    private peopleService: PeopleService) { }
+    private peopleService: PeopleService,
+    private router: Router) { }
 
   ngOnInit() {
     const id = parseInt(this.route.snapshot.paramMap.get("id"));
@@ -25,4 +27,28 @@ export class PersonDetailComponent implements OnInit {
     });
   }
 
+  getImage(fileName: string) {
+    if (!fileName) {
+      fileName = "no-image.jpg"
+    }
+    return environment.resourceUrl + "/images/" + fileName;
+  }
+
+  navigateToPerson(personId: number) {
+    this.router.navigate(["/personDetail/" + personId]);
+    this.peopleService.getPersonDetail(personId).subscribe(personDetail => {
+      this.person = personDetail;
+    });
+  }
+  getPersonLink(personId: number) {
+    return (environment.rootUrl + "personDetail/" + personId);
+  }
+
+  goToList(){
+    this.router.navigate(["../../person"]);
+  }
+
+  getAge(birthYear:number){
+    return new Date().getFullYear() - birthYear;
+  }
 }
