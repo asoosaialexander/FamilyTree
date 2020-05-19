@@ -10,6 +10,7 @@ import { PersonDetailComponent } from './components/person-detail/person-detail.
 import { SiblingCardComponent } from './components/sibling-card/sibling-card.component';
 import { ChildrenCardComponent } from './components/child-card/child-card.component';
 import { SpouseManageComponent } from './components/spouse-manage/spouse-manage.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SpouseManageComponent } from './components/spouse-manage/spouse-manage.
     PersonDetailComponent,
     SiblingCardComponent,
     ChildrenCardComponent,
-    SpouseManageComponent
+    SpouseManageComponent,
+    SearchFilterPipe
   ],
   imports: [
     BrowserModule,

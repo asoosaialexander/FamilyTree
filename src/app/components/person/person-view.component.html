@@ -17,7 +17,7 @@
           <button href="" class="btn btn-primary" routerLink="/personEdit/0"><i class="fa fa-plus"></i> New
             Person</button>
           <span class="pull-right">
-            <input type="text" ng-model="search" class="form-control" placeholder="Search">
+            <input type="text" [(ngModel)]="searchText" id="search" class="form-control" placeholder="Search">
           </span>
         </div>
       </div>
@@ -54,7 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let person of persons">
+          <tr *ngFor="let person of persons | searchFilter:searchText">
             <td>
               <div *ngIf="person.photo">
                 <img [src]="getImage(person.photo)" alt="profile picture" style="width: 60px; height: 60px;"/>

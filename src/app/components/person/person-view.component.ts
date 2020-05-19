@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 export class PersonViewComponent implements OnInit {
 
   persons: Person[];
+  searchText:string='';
 
   constructor(private peopleService: PeopleService) { }
 
