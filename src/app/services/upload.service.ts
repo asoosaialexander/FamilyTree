@@ -8,11 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UploadService {
 
-  private url = environment.apiUrl + "upload/";
+  private url = environment.apiUrl + 'upload/';
 
   constructor(private http: HttpClient) { }
 
-  uploadFile(formData:FormData):Observable<any>{
-    return this.http.post(this.url, formData, {reportProgress: true, observe: 'events'});
+  uploadFile(formData: FormData): Observable<any> {
+    return this.http.post(this.url, formData, { reportProgress: true, observe: 'events' });
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import * as $ from 'jquery';
 import { PeopleService } from 'src/app/services/people.service';
 import { Person } from 'src/app/shared/Person';
 import { SpouseService } from 'src/app/services/spouse.service';
@@ -9,11 +8,12 @@ import { SpouseService } from 'src/app/services/spouse.service';
   templateUrl: './spouse-manage.component.html',
   styleUrls: ['./spouse-manage.component.css']
 })
+
 export class SpouseManageComponent implements OnInit {
 
   @Input() personId: number;
   @Input() gender: string;
-  selectedSpouse: number = 0;
+  selectedSpouse = 0;
   spouses: Person[];
   people: Person[];
 
@@ -23,7 +23,7 @@ export class SpouseManageComponent implements OnInit {
 
   ngOnInit() {
     this.peopleService.getPeople().subscribe(data => {
-      this.people = data.filter(p => p.gender != this.gender);
+      this.people = data.filter(p => p.gender !== this.gender);
     });
     this.peopleService.getSpouses(this.personId).subscribe(spouses => {
       this.spouses = spouses;
@@ -31,10 +31,16 @@ export class SpouseManageComponent implements OnInit {
   }
 
   addSpouse() {
-    this.spouseService.addPerson(this.personId, this.selectedSpouse).subscribe();
+    if (this.selectedSpouse !== 0) {
+      this.spouseService.addPerson(this.personId, this.selectedSpouse).subscribe(() => {
+        this.ngOnInit();
+      });
+    }
   }
 
   removeSpouse(spouseId: number) {
-    this.spouseService.deletePerson(this.personId, spouseId).subscribe();
+    this.spouseService.deletePerson(this.personId, spouseId).subscribe(() => {
+      this.ngOnInit();
+    });
   }
 }

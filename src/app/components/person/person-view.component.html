@@ -57,7 +57,7 @@
           <tr *ngFor="let person of persons | searchFilter:searchText">
             <td>
               <div *ngIf="person.photo">
-                <img [src]="getImage(person.photo)" alt="profile picture" style="width: 60px; height: 60px;"/>
+                <img [src]="getImage(person.photo)" alt="profile picture" style="width: 60px; height: 60px;" />
               </div>
             </td>
             <td><a href="#" [routerLink]="['/personDetail',person.id]">{{person.name}}</a></td>

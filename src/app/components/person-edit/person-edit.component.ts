@@ -1,5 +1,4 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Location } from '@angular/common';
 import { Person } from 'src/app/shared/Person';
 import { PeopleService } from 'src/app/services/people.service';
@@ -21,7 +20,7 @@ export class PersonEditComponent implements OnInit {
   progress: number;
   message: string;
 
-  @Output() public onUploadFinished = new EventEmitter();
+  @Output() public uploadFinished = new EventEmitter();
 
   constructor(
     private location: Location,
@@ -37,19 +36,18 @@ export class PersonEditComponent implements OnInit {
       this.mothers = mothers;
     });
 
-    const id = parseInt(this.route.snapshot.paramMap.get("id"));
-    if (id == 0) {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    if (id === 0) {
       this.person = {
         id: 0,
-        isAlive: true,
-        name: "",
-        gender: "",
-        occupation: "",
-        residence: "",
-        photo: ""
-      }
-    }
-    else {
+        isAlive: 1,
+        name: '',
+        gender: '',
+        occupation: '',
+        residence: '',
+        photo: ''
+      };
+    } else {
       this.peopleService.getPerson(id).subscribe(person => {
         this.person = person;
       });
@@ -58,7 +56,7 @@ export class PersonEditComponent implements OnInit {
   }
 
   submitForm() {
-    if (this.person.id == 0) {
+    if (this.person.id === 0) {
       this.peopleService.addPerson(this.person).subscribe();
     } else {
       this.peopleService.updatePerson(this.person.id, this.person).subscribe();
@@ -72,9 +70,9 @@ export class PersonEditComponent implements OnInit {
 
   getImage(fileName: string) {
     if (!fileName) {
-      fileName = "no-image.jpg"
+      fileName = 'no-image.jpg';
     }
-    return environment.resourceUrl + "/images/" + fileName;
+    return environment.resourceUrl + '/images/' + fileName;
   }
 
   public uploadFile = (files) => {
@@ -82,18 +80,19 @@ export class PersonEditComponent implements OnInit {
       return;
     }
 
-    let fileToUpload = <File>files[0];
+    const fileToUpload = files[0] as File;
     const formData = new FormData();
 
     formData.append('file', fileToUpload, fileToUpload.name);
 
     this.uploadService.uploadFile(formData).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
+      if (event.type === HttpEventType.UploadProgress) {
         this.progress = Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response) {
+      }
+      if (event.type === HttpEventType.Response) {
         this.message = 'Upload success.';
         this.person.photo = fileToUpload.name;
-        this.onUploadFinished.emit(event.body);
+        this.uploadFinished.emit(event.body);
       }
     });
   }

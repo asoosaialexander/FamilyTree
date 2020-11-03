@@ -5,6 +5,7 @@ import { Config } from '../shared/Config';
 @Injectable({
   providedIn: 'root'
 })
+
 export class ConfigService {
   configUrl = '../assets/config.json';
   config: Config;
@@ -12,7 +13,7 @@ export class ConfigService {
   constructor(private http: HttpClient) { }
 
   getConfig() {
-    return this.http.get<Config>(this.configUrl, { observe: "response" });
+    return this.http.get<Config>(this.configUrl, { observe: 'response' });
   }
 
   showConfig() {
@@ -22,8 +23,8 @@ export class ConfigService {
         const keys = res.headers.keys();
         // this.headers = keys.map(key =>
         //   `${key}: ${res.headers.get(key)}`);
-        this.config = { ...res.body }
+        this.config = { ...res.body };
       }
-    )
+    );
   }
 }

@@ -1,7 +1,7 @@
 export class Person {
   id: number;
   name: string;
-  isAlive: boolean;
+  isAlive: number;
   fatherId?: number;
   father?: string;
   motherId?: number;
@@ -11,5 +11,5 @@ export class Person {
   occupation?: string;
   residence?: string;
   photo?: string;
-  maritalStatus?:string;
+  maritalStatus?: string;
 }

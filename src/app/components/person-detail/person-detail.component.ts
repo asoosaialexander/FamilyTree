@@ -21,7 +21,7 @@ export class PersonDetailComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
-    const id = parseInt(this.route.snapshot.paramMap.get("id"));
+    const id = parseInt(this.route.snapshot.paramMap.get('id'), 10);
     this.peopleService.getPersonDetail(id).subscribe(personDetail => {
       this.person = personDetail;
     });
@@ -29,26 +29,26 @@ export class PersonDetailComponent implements OnInit {
 
   getImage(fileName: string) {
     if (!fileName) {
-      fileName = "no-image.jpg"
+      fileName = 'no-image.jpg';
     }
-    return environment.resourceUrl + "/images/" + fileName;
+    return `${environment.resourceUrl}/images/${fileName}`;
   }
 
   navigateToPerson(personId: number) {
-    this.router.navigate(["/personDetail/" + personId]);
+    this.router.navigate(['/personDetail/' + personId]);
     this.peopleService.getPersonDetail(personId).subscribe(personDetail => {
       this.person = personDetail;
     });
   }
   getPersonLink(personId: number) {
-    return (environment.rootUrl + "personDetail/" + personId);
+    return (environment.rootUrl + 'personDetail/' + personId);
   }
 
-  goToList(){
-    this.router.navigate(["../../person"]);
+  goToList() {
+    this.router.navigate(['../../person']);
   }
 
-  getAge(birthYear:number){
-    return new Date().getFullYear() - birthYear;
+  getAge(birthYear: number) {
+    return birthYear > 0 ? new Date().getFullYear() - birthYear : 'Unknown';
   }
 }

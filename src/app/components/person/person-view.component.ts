@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PeopleService } from '../../services/people.service';
 import { Person } from '../../shared/Person';
-import { $ } from 'protractor';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -12,7 +11,7 @@ import { environment } from 'src/environments/environment';
 export class PersonViewComponent implements OnInit {
 
   persons: Person[];
-  searchText:string='';
+  searchText = '';
 
   constructor(private peopleService: PeopleService) { }
 
@@ -27,7 +26,7 @@ export class PersonViewComponent implements OnInit {
   }
 
   onDelete(id: number, name: string) {
-    if (confirm("Are you sure to delete \"" + name + "\"?")) {
+    if (confirm('Are you sure to delete \"' + name + '\"?')) {
       this.peopleService.deletePerson(id).subscribe(
         res => { },
         err => {
@@ -38,6 +37,6 @@ export class PersonViewComponent implements OnInit {
   }
 
   getImage(fileName: string) {
-    return environment.resourceUrl + "/images/" + fileName;
+    return environment.resourceUrl + '/images/' + fileName;
   }
 }

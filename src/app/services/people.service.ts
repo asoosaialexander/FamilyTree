@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Person } from '../shared/Person';
-import{PersonDetail} from '../shared/PersonDetail';
+import { PersonDetail } from '../shared/PersonDetail';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    "Content-Type": "application/json"
-  })
-};
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +11,8 @@ const httpOptions = {
 
 export class PeopleService {
 
-  private url = environment.apiUrl + "people/";
-  private personDetailUrl = environment.apiUrl+"personDetails/"
+  private url = environment.apiUrl + 'people/';
+  private personDetailUrl = environment.apiUrl + 'personDetails/';
   error: any;
 
   constructor(private http: HttpClient) { }
@@ -27,8 +21,8 @@ export class PeopleService {
     return this.http.get<Person[]>(this.url);
   }
 
-  getPerson(id:number):Observable<Person>{
-    return this.http.get<Person>(this.url+id);
+  getPerson(id: number): Observable<Person> {
+    return this.http.get<Person>(this.url + id);
   }
 
   addPerson(person: Person): Observable<Person> {
@@ -43,19 +37,19 @@ export class PeopleService {
     return this.http.delete(this.url + id);
   }
 
-  getFathers():Observable<Person[]>{
-    return this.http.get<Person[]>(this.url+"fathers");
+  getFathers(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.url + 'fathers');
   }
 
-  getMothers():Observable<Person[]>{
-    return this.http.get<Person[]>(this.url+"mothers");
+  getMothers(): Observable<Person[]> {
+    return this.http.get<Person[]>(this.url + 'mothers');
   }
 
-  getPersonDetail(id:number):Observable<PersonDetail>{
-    return this.http.get<PersonDetail>(this.personDetailUrl+id);
+  getPersonDetail(id: number): Observable<PersonDetail> {
+    return this.http.get<PersonDetail>(this.personDetailUrl + id);
   }
 
-  getSpouses(id:number):Observable<Person[]>{
-    return this.http.get<Person[]>(this.url+"spouses/"+id);
+  getSpouses(id: number): Observable<Person[]> {
+    return this.http.get<Person[]>(this.url + 'spouses/' + id);
   }
 }

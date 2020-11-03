@@ -16,10 +16,10 @@ export class ChildrenCardComponent implements OnInit {
   }
 
   getPersonLink(personId: number) {
-    return (environment.rootUrl + "personDetail/" + personId);
+    return (environment.rootUrl + 'personDetail/' + personId);
   }
 
-  getAge(birthYear:number){
+  getAge(birthYear: number) {
     return new Date().getFullYear() - birthYear;
   }
 

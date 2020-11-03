@@ -10,14 +10,14 @@
           <div class="row">
             <div class="col-3">
               <select class="form-control form-control-sm" [(ngModel)]="selectedSpouse" id="selectedSpouse"
-                name="selectedSpouse">
+                name="selectedSpouse" required>
                 <option [ngValue]="0">Select Spouse</option>
                 <option *ngFor="let person of people" [ngValue]="person.id" [selected]="person.id === selectedSpouse">
                   {{person.name}}</option>
               </select>
             </div>
             <div class="col">
-              <button class="btn btn-sm btn-secondary" (click)="addSpouse()"><span class="fa fa-plus"></span> Add Spouse</button>
+              <button type="button" class="btn btn-sm btn-secondary" (click)="addSpouse()"><span class="fa fa-plus"></span> Add Spouse</button>
             </div>
           </div>
         </div>
@@ -35,7 +35,7 @@
               <tr *ngFor="let spouse of spouses">
                 <td>{{spouse.name}}</td>
                 <td>
-                  <button class="btn btn-danger btn-sm" (click)="removeSpouse(spouse.id)">
+                  <button type="button" class="btn btn-danger btn-sm" (click)="removeSpouse(spouse.id)">
                     <span class="fa fa-trash"></span> Delete
                   </button>
                 </td>

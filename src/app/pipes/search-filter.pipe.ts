@@ -7,7 +7,6 @@ import { Person } from '../shared/Person';
 export class SearchFilterPipe implements PipeTransform {
 
   transform(persons: Person[], filter: string): any {
-    console.log(persons);
     if (!persons || !filter) {
       return persons;
     }
