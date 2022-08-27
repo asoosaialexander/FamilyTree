@@ -1,0 +1,7 @@
+<div>
+    <h6 class="mb-0">
+      <a [href]="getPersonLink(sibling.info.id)">{{sibling.info.name}}</a>
+    </h6>
+    <p class="mb-0" *ngIf="age">Age: {{age}}</p>
+    <span [ngClass]="badge">{{sibling.relation}}</span>
+</div>
